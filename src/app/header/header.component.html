@@ -1,0 +1,13 @@
+<div class="header" *ngIf="isLoggedIn">
+  <div class="menu_left">
+    <a class="name_program" href = "" (click)="resend()">
+      Tickets
+    </a>
+    <div class="date_header">
+    </div>
+  </div>
+  <div class="menu">
+    <a href="/#/profile">Профиль</a>
+    <a href="/#/login" (click)="signOut()">Выход</a>
+  </div>
+</div>

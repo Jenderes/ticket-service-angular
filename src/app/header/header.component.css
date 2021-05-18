@@ -1,0 +1,70 @@
+.header {
+  margin-top: 0;
+  padding-top: 0;
+  background-color: #232323;
+  border-color: transparent;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  height: 8%;
+}
+
+.menu_left{
+  display: flex;
+  flex-direction: row;
+  text-transform: uppercase;
+  width: 90%;
+}
+
+.name_program {
+  font-size: 35px;
+  font-weight: 500;
+  margin-left: 2%;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #f7f8ff;
+  padding-right: 10%;
+  display: flex;
+  align-items: center;
+}
+
+.date_header{
+  display: flex;
+  flex-direction: row;
+}
+
+.date_header div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 23px;
+}
+
+.menu{
+  float: right;
+  margin-right: 5%;
+  margin-top: 6px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.menu a{
+  font-size: 21px;
+  color: #eef5f7 !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-right: 20%;
+}
+
+.logo_date {
+  height: 70%;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+.logo_date img{
+  height: 90%;
+}

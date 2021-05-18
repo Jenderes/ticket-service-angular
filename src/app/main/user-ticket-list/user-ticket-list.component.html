@@ -1,0 +1,24 @@
+<div class="body_ticket">
+  <button mat-raised-button color="primary" (click)="createTicket()" class="create_task_button">Создать задачу</button>
+  <div class="ckeck_task" *ngIf="isTicket">
+    <div class="task" *ngFor="let ticket of dataTicket" (click)="getId(task.id)">
+      <div class="gen_task">
+        <div class="data_task">
+          <div class="task_header">{{ticket.taskHead}}</div>
+          <div class="task_work_variant">{{ticket.workVariant}}</div>
+          <div class="task_sender_name">{{ticket.taskGetEmployeeId}}</div>
+        </div>
+        <div class="task_for_button">
+          <button (click)="cancelTask(task.id)" class="button_task cancel_task_button">Отменить</button>
+          <button (click)="completeTask(task.id)" class="button_task complete_task_button">Выполнить</button>
+        </div>
+      </div>
+      <div class="hide_task hidden__hide_task">
+        <div class="taskDescription">{{task.taskDescription}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="empty-task" *ngIf="!isTicket">
+    Задачи отсуствуют
+  </div>
+</div>

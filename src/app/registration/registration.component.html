@@ -1,0 +1,49 @@
+<div class="register">
+  <div class="register__window">
+    <form class="register__form" [formGroup]="registerForm" *ngIf="!isRegister" name="registerForm" #f = "ngForm" novalidate>
+      <input type="text" class="register__input" placeholder = "Логин" name = "login" formControlName="login">
+      <div formGroupName="passwordsForm">
+        <input minlength="8" class="register__input" type="password" placeholder="Пароль" formControlName="password"
+               name="password" />
+        <div
+          *ngIf="registerForm.get('passwordsForm').controls['password'].errors && registerForm.get('passwordsForm').controls['password'].touched">
+          <div *ngIf="registerForm.get('passwordsForm').controls['password'].errors.required">
+            <app-error [error1]="'Введите пароль'"></app-error>
+          </div>
+          <div *ngIf="registerForm.get('passwordsForm').controls['password'].errors.minlength">
+            <app-error [error1]="'Минимальная длинна пароля 8 символов'"></app-error>
+          </div>
+        </div>
+        <div
+          *ngIf="registerForm.get('passwordsForm').controls['password'].errors && registerForm.get('passwordsForm').controls['password'].errors.required && registerForm.get('passwordsForm').controls['password'].touched">
+          <app-error [error1]="'Введите пароль'"></app-error>
+        </div>
+        <input class="register__input" type="password" placeholder="Повторите пароль"
+               formControlName="passwordConfirm" />
+        <div
+          *ngIf="registerForm.get('passwordsForm').controls['passwordConfirm'].errors && registerForm.get('passwordsForm').controls['passwordConfirm'].errors.match && registerForm.get('passwordsForm').controls['passwordConfirm'].touched">
+          <app-error [error1]="registerForm.get('passwordsForm').controls['passwordConfirm'].errors.match"></app-error>
+        </div>
+        <div
+          *ngIf="registerForm.get('passwordsForm').controls['passwordConfirm'].errors && registerForm.get('passwordsForm').controls['passwordConfirm'].errors.required && form.get('passwordsForm').controls['passwordConfirm'].touched">
+          Введите подтверждение пароля
+        </div>
+      </div>
+      <input type="text" class="register__input" placeholder = "Email" name = "email" formControlName="email">
+      <input type="text" class="register__input" placeholder = "Имя" name = "firstName" formControlName="firstName">
+      <div *ngIf="registerForm.controls['firstName'].invalid && registerForm.controls['firstName'].touched">
+        <app-error [error1]="'Введите имя'"></app-error>
+      </div>
+      <input type="text" class="register__input" placeholder = "Фамилия" name = "lastName" formControlName="lastName">
+      <div *ngIf="registerForm.controls['lastName'].invalid && registerForm.controls['lastName'].touched">
+        <app-error [error1]="'Введите фамилию'"></app-error>
+      </div>
+      <button class = "register__button" (click)="register()">Зарегистрироваться</button>
+      <div class="alert" *ngIf="f.submitted && isRegisterFailed">
+        {{ errorMessage }}
+      </div>
+      <p class="register__message">Есть аккаунт? <a class="register__create" href="/#/login">Войти в аккаунт</a>
+      </p>
+    </form>
+  </div>
+</div>
