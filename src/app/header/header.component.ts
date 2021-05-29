@@ -10,6 +10,8 @@ import {Router} from '@angular/router';
 export class HeaderComponent implements OnInit, DoCheck {
   isLoggedIn = false;
   isManager = false;
+  username = '';
+  role = 'ПОЛЬЗОВАТЕЛЬ';
   constructor(private tokenStorageService: TokenStorageService,
               private route: Router) {
   }
@@ -17,8 +19,12 @@ export class HeaderComponent implements OnInit, DoCheck {
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
     this.isManager = this.tokenStorageService.checkRole('ROLE_MANAGER');
+    if (this.isManager){
+      this.role = 'МЕНЕДЖЕР';
+    }
   }
   ngDoCheck(): void {
+    this.username = this.tokenStorageService.getUser().username;
   }
   signOut(): void {
     this.isLoggedIn = false;
@@ -27,8 +33,10 @@ export class HeaderComponent implements OnInit, DoCheck {
 
   resend(): void {
     if (this.tokenStorageService.checkRole('MANAGER')){
+      this.role = 'МЕНЕДЖЕР';
       this.route.navigate(['/manager']).then();
     } else {
+      this.role = 'ПОЛЬЗОВАТЕЛЬ';
       this.route.navigate(['/user']).then();
     }
   }

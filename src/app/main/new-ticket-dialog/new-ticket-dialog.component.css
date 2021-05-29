@@ -1,0 +1,30 @@
+.dialog_name {
+  font-size: 20pt;
+  font-weight: bold;
+  color: #474747;
+}
+.dialog_div {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  font-size: 16pt;
+}
+.desc {
+  font-weight: bold;
+  color: #6d6d6d;
+  font-size: 18pt;
+  margin-right: 10px;
+}
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.buttons button:first-child {
+  margin-right: 30px;
+  font-size: 15pt;
+}
+.buttons button {
+  font-size: 15pt;
+}

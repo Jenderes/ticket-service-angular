@@ -13,6 +13,7 @@ interface Category {
 }
 
 const API_URL_TICKET = GlobalVariable.API_URL + 'troubleTicket';
+const API_URL_USER = GlobalVariable.API_URL + 'auth';
 const httpOptions = GlobalVariable.httpOptions;
 
 @Injectable({
@@ -45,7 +46,8 @@ export class TicketService {
   getUserAssigneeTicket(): Observable<any> {
     return this.http.get(API_URL_TICKET, {
       params: {
-        userAssigneeId: this.tokenStorageService.getCurrentId()
+        userAssigneeId: this.tokenStorageService.getCurrentId(),
+        status: 'ASSIGNED'
       }
     });
   }
@@ -60,7 +62,6 @@ export class TicketService {
   createTicket(ticket): Observable<any> {
     return this.http.post(API_URL_TICKET, {
       name: ticket.name,
-      createById: ticket.createById,
       description: ticket.description,
       category: ticket.category,
     }, httpOptions);
@@ -69,5 +70,23 @@ export class TicketService {
     return this.http.patch(API_URL_TICKET + '/' + ticketId, {
       status: statusValue
     }, httpOptions);
+  }
+  changeStatusTicketAndAssignee(ticketId: number, statusValue: string): Observable<any>{
+    const userId = this.tokenStorageService.getCurrentId();
+    return this.http.patch(API_URL_TICKET + '/' + ticketId, {
+      userAssigneeId: userId,
+      status: statusValue
+    }, httpOptions);
+  }
+  findUserById(userId: number): Observable<any> {
+    return this.http.get(API_URL_USER + '/user/' + userId);
+  }
+  getTicketById(ticketId: number): Observable<any> {
+    return this.http.get(API_URL_TICKET + '/' + ticketId);
+  }
+  cancelTicketById(ticketId: string): Observable<any> {
+    return this.http.patch(API_URL_TICKET + '/' + ticketId, {
+      status: 'REJECTED'
+    });
   }
 }

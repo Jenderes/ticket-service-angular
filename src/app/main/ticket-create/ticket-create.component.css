@@ -1,0 +1,225 @@
+.create_task {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}
+
+.window_task {
+  height: 60%;
+  width: 40%;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.input_add_task {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin-top: 3%;
+  align-items: center;
+}
+
+.head_task {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 25px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.button_select_user {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background-color: #1565C0;
+  width: 70%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.task_description {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 25px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.date_end, .date_start {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 25px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.date_div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.date_div label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16pt;
+  margin-bottom: 2%;
+}
+
+.date_div input {
+  width: 40%;
+}
+
+.date_div_check {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.date_div_check label {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 16pt;
+  margin-bottom: 2%;
+  color: #878787;
+}
+
+.current_date {
+  width: 40%;
+}
+
+.cheсk_date label {
+  width: 100%;
+}
+
+.cheсk_date {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-left: 10%;
+}
+
+.check_date_current {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  height: 2vh;
+  width: 2vw;
+}
+
+.work_select {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 25px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.work_select_label {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 16pt;
+  margin-bottom: 2%;
+}
+
+.selector_user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.label_name_user {
+  margin-top: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16pt;
+  margin-bottom: 2%;
+}
+
+.list_name_user {
+  font-size: 15pt;
+  color: #878787;
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  align-items: center;
+}
+
+.button_create_task {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background-color: #1565C0;
+  width: 50%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  margin-right: 5%;
+}
+
+.button_cancel_task {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background-color: #E91E63;
+  width: 50%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.button_create {
+  width: 100%;
+  margin-top: 3%;
+}
+
+.button_create button {
+  width: 25%;
+}

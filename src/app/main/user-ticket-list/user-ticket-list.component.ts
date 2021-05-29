@@ -3,11 +3,14 @@ import {TicketService} from '../../_service/ticket.service';
 import {TokenStorageService} from '../../_service/token-storage.service';
 import {Router} from '@angular/router';
 import {DictionaryService} from '../../_service/dictionary.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {TicketInformationDialogComponent} from '../ticket-information-dialog/ticket-information-dialog.component';
 interface TicketData {
   ticketId: number;
   name: string;
   description: string;
   category: string;
+  status: string;
 }
 interface Category {
   displayName: string;
@@ -24,12 +27,7 @@ export class UserTicketListComponent implements OnInit {
   categories: Category[];
   public isTicket = false;
   constructor(private ticketService: TicketService, private tokenStorageService: TokenStorageService,
-              private  router: Router, private dictionaryService: DictionaryService) {
-    this.dictionaryService.getAllCategory().subscribe(
-      data => {
-        this.getCategoryList(data);
-      }
-    );
+              private  router: Router, private dictionaryService: DictionaryService, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -45,13 +43,15 @@ export class UserTicketListComponent implements OnInit {
     if (data != null && data.length > 0){
       this.isTicket = true;
       this.dataTicket = data;
-      for (const elem of this.dataTicket){
-        for (const el of this.categories){
-          if (elem.category === el.name){
-            elem.category = el.displayName;
-            break;
-          }
-        }
+      for (const ticket of this.dataTicket){
+        this.dictionaryService.getCategoryByName(ticket.category).subscribe(
+          category => {
+            ticket.category = category.displayName;
+          });
+        this.dictionaryService.getStatusByName(ticket.status).subscribe(
+          status => {
+            ticket.status = status.displayName;
+          });
       }
     } else {
       this.isTicket = false;
@@ -66,5 +66,14 @@ export class UserTicketListComponent implements OnInit {
 
   allInformationTicket(id: number): void {
     console.log(id);
+  }
+  openDialog(ticketId: number): void {
+    const dialogRef = this.dialog.open(TicketInformationDialogComponent, {
+      width: '600px',
+      data: {idTicket: ticketId}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.router.navigate(['/user']).then();
+    });
   }
 }

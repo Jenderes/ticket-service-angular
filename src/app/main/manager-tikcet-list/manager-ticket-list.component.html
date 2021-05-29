@@ -5,7 +5,7 @@
     </button>
   </div>
   <div class="check_ticket" *ngIf="isTicket">
-    <div class="ticket" *ngFor="let ticket of dataTicket" (click)="allInformationTicket(ticket.ticketId)">
+    <div class="ticket" *ngFor="let ticket of dataTicket" (click)="openDialog(ticket.ticketId)">
       <div class="gen_ticket">
         <div class="data_ticket">
           <div class="ticket_name data">
@@ -21,6 +21,6 @@
     </div>
   </div>
   <div class="empty-ticket" *ngIf="!isTicket">
-    Задачи отсуствуют
+    Выполняемые задачи отсуствуют
   </div>
 </div>

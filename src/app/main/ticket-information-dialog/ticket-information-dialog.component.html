@@ -1,0 +1,79 @@
+<div class="dialog">
+  <div class="dialog_form">
+    <div class="dialog_name">
+      Задача № {{currentTicket.ticketId}}
+    </div>
+    <div class="dialog_div">
+      <div class="desc">
+        Имя задачи:
+      </div>
+      <div class="name_desc">
+        {{currentTicket.name}}
+      </div>
+    </div>
+    <div class="dialog_div">
+      <div class="desc">
+        Описание задачи:
+      </div>
+      <div class="name_desc">
+        {{currentTicket.description}}
+      </div>
+    </div>
+    <div class="dialog_div">
+      <div class="desc">
+        Категория:
+      </div>
+      <div class="name_desc">
+        {{currentTicket.category}}
+      </div>
+    </div>
+    <div class="dialog_div">
+      <div class="desc">
+        Статус:
+      </div>
+      <div class="name_desc">
+        {{currentTicket.status}}
+      </div>
+    </div>
+    <div class="dialog_div">
+      <div class="desc">
+        Испольнитель:
+      </div>
+      <div class="name_desc">
+        {{currentTicket.userAssigneeId}}
+      </div>
+    </div>
+    <div class="dialog_div">
+      <div class="desc">
+        Имя отправителя:
+      </div>
+      <div class="name_desc">
+        {{currentTicket.userFullName}}
+      </div>
+    </div>
+    <div class="dialog_div">
+      <div class="desc">
+        Дата создания:
+      </div>
+      <div class="name_desc">
+        {{currentTicket.createDate}}
+      </div>
+    </div>
+    <div class="dialog_div">
+      <div class="desc">
+        Дата обновления:
+      </div>
+      <div class="name_desc">
+        {{currentTicket.updateDate}}
+      </div>
+    </div>
+    <div class="buttons">
+      <button *ngIf="!isComplete" mat-raised-button color="basic" (click)="cancelTicket(currentTicket.ticketId)" class="create_ticket_button">
+        Отменить задачу
+      </button>
+      <button mat-raised-button color="warn" (click)="closed()" class="create_ticket_button">
+        Закрыть
+      </button>
+    </div>
+  </div>
+</div>

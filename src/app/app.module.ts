@@ -18,7 +18,11 @@ import {DatePipe, HashLocationStrategy, LocationStrategy} from '@angular/common'
 import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import { TicketListWithoutUserassigneeComponent } from './main/ticket-list-without-userassignee/ticket-list-without-userassignee.component';
+import { TicketInformationDialogComponent } from './main/ticket-information-dialog/ticket-information-dialog.component';
+import { NewTicketDialogComponent } from './main/new-ticket-dialog/new-ticket-dialog.component';
+import { AssigneeTicketDialogComponent } from './main/assignee-ticket-dialog/assignee-ticket-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +36,9 @@ import { TicketListWithoutUserassigneeComponent } from './main/ticket-list-witho
     ErrorComponent,
     HeaderComponent,
     TicketListWithoutUserassigneeComponent,
+    TicketInformationDialogComponent,
+    NewTicketDialogComponent,
+    AssigneeTicketDialogComponent,
   ],
     imports: [
         BrowserModule,
@@ -40,7 +47,8 @@ import { TicketListWithoutUserassigneeComponent } from './main/ticket-list-witho
         HttpClientModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
-        MatButtonModule
+        MatButtonModule,
+        MatDialogModule
     ],
   providers: [DatePipe, authInterceptorProviders, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
