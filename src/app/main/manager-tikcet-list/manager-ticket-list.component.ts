@@ -8,6 +8,7 @@ interface TicketData {
   name: string;
   description: string;
   category: string;
+  userFullName: string;
 }
 interface Category {
   displayName: string;
@@ -15,44 +16,37 @@ interface Category {
   initialStatus: string;
 }
 @Component({
-  selector: 'app-user-ticket-list',
-  templateUrl: './user-ticket-list.component.html',
-  styleUrls: ['./user-ticket-list.component.css']
+  selector: 'app-manager-tikcet-list',
+  templateUrl: './manager-ticket-list.component.html',
+  styleUrls: ['./manager-ticket-list.component.css']
 })
-export class UserTicketListComponent implements OnInit {
+export class ManagerTicketListComponent implements OnInit {
   dataTicket: TicketData[];
   categories: Category[];
   public isTicket = false;
-  constructor(private ticketService: TicketService, private tokenStorageService: TokenStorageService,
-              private  router: Router, private dictionaryService: DictionaryService) {
+  constructor(private ticketService: TicketService, private dictionaryService: DictionaryService,
+              private tokenStorageService: TokenStorageService,
+              private  router: Router) {
     this.dictionaryService.getAllCategory().subscribe(
       data => {
-        this.getCategoryList(data);
+        this.categories = data;
       }
     );
   }
 
   ngOnInit(): void {
     if (this.tokenStorageService.getToken()){
-      this.ticketService.getUserTicket().subscribe(
-        data => {
-          this.getTicketList(data);
+      this.ticketService.getUserAssigneeTicket().subscribe(
+        tickets => {
+          this.convertToTicketList(tickets);
         }
       );
     }
   }
-  getTicketList(data: TicketData[]): void {
+  convertToTicketList(data: TicketData[]): void {
     if (data != null && data.length > 0){
       this.isTicket = true;
       this.dataTicket = data;
-      for (const elem of this.dataTicket){
-        for (const el of this.categories){
-          if (elem.category === el.name){
-            elem.category = el.displayName;
-            break;
-          }
-        }
-      }
     } else {
       this.isTicket = false;
     }
@@ -60,11 +54,19 @@ export class UserTicketListComponent implements OnInit {
   createTicket(): void {
     this.router.navigate(['/create']).then();
   }
-  getCategoryList(categories: Category[]): void{
-    this.categories = categories;
-  }
-
   allInformationTicket(id: number): void {
     console.log(id);
+  }
+
+  completeTicket(requestId: number): void {
+    this.ticketService.changeStatusTicket(requestId, 'complete');
+  }
+
+  rejectTicket(requestId: number): void {
+    this.ticketService.changeStatusTicket(requestId, 'rejected');
+  }
+
+  newTicket(): void {
+    this.router.navigate(['./new_ticket']).then();
   }
 }

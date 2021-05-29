@@ -8,7 +8,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { MainComponent } from './main/main.component';
 import { TicketCreateComponent } from './main/ticket-create/ticket-create.component';
 import { UserTicketListComponent } from './main/user-ticket-list/user-ticket-list.component';
-import { ManagerTikcetListComponent } from './main/manager-tikcet-list/manager-tikcet-list.component';
+import { ManagerTicketListComponent } from './main/manager-tikcet-list/manager-ticket-list.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ErrorComponent } from './error/error.component';
@@ -16,7 +16,9 @@ import { HeaderComponent } from './header/header.component';
 import {authInterceptorProviders} from './_helpers/auth.interceptor';
 import {DatePipe, HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
+import { TicketListWithoutUserassigneeComponent } from './main/ticket-list-without-userassignee/ticket-list-without-userassignee.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,10 +27,11 @@ import {HttpClientModule} from '@angular/common/http';
     MainComponent,
     TicketCreateComponent,
     UserTicketListComponent,
-    ManagerTikcetListComponent,
+    ManagerTicketListComponent,
     NotFoundComponent,
     ErrorComponent,
-    HeaderComponent
+    HeaderComponent,
+    TicketListWithoutUserassigneeComponent,
   ],
     imports: [
         BrowserModule,
@@ -36,6 +39,8 @@ import {HttpClientModule} from '@angular/common/http';
         FormsModule,
         HttpClientModule,
         ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MatButtonModule
     ],
   providers: [DatePipe, authInterceptorProviders, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]

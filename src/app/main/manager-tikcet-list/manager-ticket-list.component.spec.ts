@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ManagerTikcetListComponent } from './manager-tikcet-list.component';
+import { ManagerTicketListComponent } from './manager-ticket-list.component';
 
 describe('ManagerTikcetListComponent', () => {
-  let component: ManagerTikcetListComponent;
-  let fixture: ComponentFixture<ManagerTikcetListComponent>;
+  let component: ManagerTicketListComponent;
+  let fixture: ComponentFixture<ManagerTicketListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ManagerTikcetListComponent ]
+      declarations: [ ManagerTicketListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ManagerTikcetListComponent);
+    fixture = TestBed.createComponent(ManagerTicketListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

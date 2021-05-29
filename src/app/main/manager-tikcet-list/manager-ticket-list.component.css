@@ -12,7 +12,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 40vw;
+  width: 50vw;
   border-radius: 5px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: #ffffff;
@@ -110,7 +110,8 @@
 }
 
 .buttons button{
-  width: 15vw;
+  margin-right: 30px;
+  width: 10vw;
   height: 4vh;
   font-size: 18pt;
 }

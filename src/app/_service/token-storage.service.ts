@@ -41,4 +41,8 @@ export class TokenStorageService {
     this.roles = this.roleUser.roles;
     return this.roles.length > 1 && this.roles[1] === role;
   }
+
+  public getCurrentId(): string {
+    return this.getUser().userId;
+  }
 }

@@ -27,7 +27,7 @@ export class MainComponent implements OnInit {
     const userData: UserData = this.tokenStorageService.getUser();
     this.userEmail = userData.email;
     this.userFullName = userData.firstname + ' ' + userData.lastname;
-    if (!this.tokenStorageService.checkRole('MANAGER')){
+    if (this.tokenStorageService.checkRole('ROLE_MANAGER')){
       this.route.navigate(['/manager']).then();
     } else {
       this.route.navigate(['/user']).then();

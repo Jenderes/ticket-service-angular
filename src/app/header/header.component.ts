@@ -15,10 +15,10 @@ export class HeaderComponent implements OnInit, DoCheck {
   }
 
   ngOnInit(): void {
-  }
-  ngDoCheck(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
     this.isManager = this.tokenStorageService.checkRole('ROLE_MANAGER');
+  }
+  ngDoCheck(): void {
   }
   signOut(): void {
     this.isLoggedIn = false;
@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   }
 
   resend(): void {
-    if (!this.tokenStorageService.checkRole('MANAGER')){
+    if (this.tokenStorageService.checkRole('MANAGER')){
       this.route.navigate(['/manager']).then();
     } else {
       this.route.navigate(['/user']).then();

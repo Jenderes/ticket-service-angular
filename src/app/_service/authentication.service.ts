@@ -3,7 +3,7 @@ import {GlobalVariable} from '../_helpers/variable.service';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
-const AUTH_API = GlobalVariable.API_URL + 'authentication/';
+const AUTH_API = GlobalVariable.API_URL + 'auth/';
 const HttpOptions = GlobalVariable.httpOptions;
 
 @Injectable({
