@@ -14,10 +14,7 @@ interface UserData {
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  nameBlock;
-  userEmail: string;
   userFullName: string;
-  isManager: boolean;
   constructor(private tokenStorageService: TokenStorageService, private route: Router) { }
 
   ngOnInit(): void {
@@ -25,12 +22,7 @@ export class MainComponent implements OnInit {
       this.route.navigate(['/#/login']).then();
     }
     const userData: UserData = this.tokenStorageService.getUser();
-    this.userEmail = userData.email;
     this.userFullName = userData.firstname + ' ' + userData.lastname;
-    if (this.tokenStorageService.checkRole('ROLE_MANAGER')){
-      this.route.navigate(['/manager']).then();
-    } else {
-      this.route.navigate(['/user']).then();
-    }
+    this.route.navigate(['/user']).then();
   }
 }

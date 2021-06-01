@@ -1,24 +1,38 @@
 <div class="body_ticket">
+  <div class="ticket_label_main">
+    <div class="lab" *ngIf="!isManager">Созданные задачи</div>
+    <div class="lab" *ngIf="isManager && !isNewTicketManager">Выполняемые задачи</div>
+    <div class="lab" *ngIf="isManager && isNewTicketManager">Новые задачи</div>
+  </div>
   <div class="buttons">
-    <button mat-raised-button color="primary" (click)="createTicket()" class="create_ticket_button">
+    <button *ngIf="!isManager" mat-raised-button color="primary" (click)="createTicket()" class="create_ticket_button">
       Создать задачу
+    </button>
+    <button *ngIf="isManager && !isNewTicketManager" mat-raised-button color="primary" (click)="newTicket()" class="create_ticket_button">
+      показать новые задачи
+    </button>
+    <button *ngIf="isManager && isNewTicketManager" mat-raised-button color="primary" (click)="userAssigneeTicket()" class="create_ticket_button">
+      показать выполняемые задачи
     </button>
   </div>
   <div class="check_ticket" *ngIf="isTicket">
     <div class="ticket" *ngFor="let ticket of dataTicket" (click)="openDialog(ticket.ticketId)">
       <div class="gen_ticket">
         <div class="data_ticket">
+          <div class="ticket_category data">
+            <img src="../../../assets/images/{{ticket.category}}.svg" alt="" class="image_category">
+          </div>
+          <div class="ticket_id data">
+            <div class="name">№ {{ticket.ticketId}}</div>
+          </div>
           <div class="ticket_name data">
-            <div class="name_label label">Наименование задачи: </div>
             <div class="name">{{ticket.name}}</div>
           </div>
-          <div class="ticket_name data">
-            <div class="name_label label">Наименование задачи: </div>
-            <div class="name">{{ticket.category}}</div>
+          <div class="ticket_user data" *ngIf="isManager">
+            <div class="name">{{ticket.userFullName}}</div>
           </div>
-          <div class="ticket_name data">
-            <div class="name_label label">Наименование задачи: </div>
-            <div class="name">{{ticket.status}}</div>
+          <div class="ticket_user data" *ngIf="!isManager">
+            <div class="name">{{ticket.managerFullName}}</div>
           </div>
         </div>
       </div>

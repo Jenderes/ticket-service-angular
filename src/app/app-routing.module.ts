@@ -1,18 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {MainComponent} from './main/main.component';
-import {ManagerTicketListComponent} from './main/manager-tikcet-list/manager-ticket-list.component';
 import {UserTicketListComponent} from './main/user-ticket-list/user-ticket-list.component';
 import {TicketCreateComponent} from './main/ticket-create/ticket-create.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {LoginComponent} from './login/login.component';
 import {RegistrationComponent} from './registration/registration.component';
-import {TicketListWithoutUserassigneeComponent} from './main/ticket-list-without-userassignee/ticket-list-without-userassignee.component';
 
 const routes: Routes = [
   { path: '', component:  MainComponent, children: [
-      { path: 'manager', component: ManagerTicketListComponent},
-      { path: 'new_ticket', component: TicketListWithoutUserassigneeComponent},
       { path: 'user', component: UserTicketListComponent},
       { path: 'create', component: TicketCreateComponent},
     ]},

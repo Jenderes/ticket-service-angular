@@ -1,13 +1,16 @@
 <div class="create_task">
   <div class="window_task">
     <div class="input_add_task">
+      <div class="label_body">
+        Создание задачи
+      </div>
       <form class="register__form" name="ticketForm" #f = "ngForm" novalidate>
         <input type="text" placeholder="Заголовок задачи" id="header_task" class="head_task"
                [(ngModel)]="ticket.name" name="name">
         <textarea cols="40" rows="3" placeholder="Основной текст задачи" id="body_task"
                   class="task_description" [(ngModel)]="ticket.description" name="description"></textarea>
         <div class="work_select_label">
-          Вид работы:
+          Категория:
         </div>
         <select class="work_select" [(ngModel)]="ticket.category" name="category">
           <option *ngFor="let category of arrayCategory" ngValue="{{category.name}}">
@@ -15,10 +18,10 @@
           </option>
         </select>
         <div class="button_create">
-          <button class="button_create_task" (click)="createTicket()">
+          <button mat-raised-button color="primary" class="button_create_task" (click)="createTicket()">
             Создать
           </button>
-          <button class="button_cancel_task" (click)="route.navigate(['/user'])">
+          <button mat-raised-button color="warn" class="button_cancel_task" (click)="route.navigate(['/user'])">
             Отменить
           </button>
         </div>

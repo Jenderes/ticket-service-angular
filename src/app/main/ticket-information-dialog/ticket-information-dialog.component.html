@@ -68,7 +68,13 @@
       </div>
     </div>
     <div class="buttons">
-      <button *ngIf="!isComplete" mat-raised-button color="basic" (click)="cancelTicket(currentTicket.ticketId)" class="create_ticket_button">
+      <button *ngIf="isNewTicketManager && isManager" mat-raised-button color="basic" (click)="assigneeTicket(currentTicket.ticketId)" class="create_ticket_button">
+        Взять задачу
+      </button>
+      <button *ngIf="!isComplete && isManager && !isNewTicketManager" mat-raised-button color="basic" (click)="completeTicket(currentTicket.ticketId)" class="create_ticket_button">
+        Выполнить задачу
+      </button>
+      <button *ngIf="!isComplete && !isManager" mat-raised-button color="basic" (click)="cancelTicket(currentTicket.ticketId)" class="create_ticket_button">
         Отменить задачу
       </button>
       <button mat-raised-button color="warn" (click)="closed()" class="create_ticket_button">

@@ -17,7 +17,7 @@
 }
 
 .name_program {
-  font-size: 35px;
+  font-size: 20pt;
   font-weight: 500;
   margin-left: 2%;
   text-transform: uppercase;
@@ -26,19 +26,6 @@
   padding-right: 10%;
   display: flex;
   align-items: center;
-}
-
-.date_header{
-  display: flex;
-  flex-direction: row;
-}
-
-.date_header div {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  font-size: 23px;
 }
 
 .menu{
@@ -52,7 +39,7 @@
 }
 
 .menu a{
-  font-size: 21px;
+  font-size: 15pt;
   color: #eef5f7 !important;
   text-transform: uppercase;
   text-decoration: none;
@@ -70,5 +57,5 @@
 }
 .label {
   margin-right: 15px;
-  font-size: 13pt;
+  font-size: 10pt;
 }

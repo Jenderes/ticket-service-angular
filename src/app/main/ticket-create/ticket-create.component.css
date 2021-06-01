@@ -6,7 +6,7 @@
 }
 
 .window_task {
-  height: 60%;
+  height: 70%;
   width: 40%;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   background: #FFFFFF;
@@ -187,39 +187,36 @@
 }
 
 .button_create_task {
-  font-family: "Roboto", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  background-color: #1565C0;
-  width: 50%;
-  border: 0;
-  padding: 15px;
-  color: #FFFFFF;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  margin-right: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15pt;
+  margin-right: 30px;
 }
 
 .button_cancel_task {
-  font-family: "Roboto", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  background-color: #E91E63;
-  width: 50%;
-  border: 0;
-  padding: 15px;
-  color: #FFFFFF;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15pt;
 }
 
 .button_create {
   width: 100%;
   margin-top: 3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button_create button {
   width: 25%;
+}
+
+.label_body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20pt;
+  margin-bottom: 30px;
 }

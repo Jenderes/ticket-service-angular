@@ -3,6 +3,7 @@ import {TicketService} from '../../_service/ticket.service';
 import {DictionaryService} from '../../_service/dictionary.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Router} from '@angular/router';
+import {TokenStorageService} from '../../_service/token-storage.service';
 interface Ticket {
   ticketId: string;
   name: string;
@@ -16,6 +17,8 @@ interface Ticket {
 }
 interface DialogData {
   idTicket: number;
+  isManager: boolean;
+  isNewTicketManager: boolean;
 }
 @Component({
   selector: 'app-ticket-information-dialog',
@@ -36,10 +39,15 @@ export class TicketInformationDialogComponent implements OnInit {
   };
   currentTicketId: number;
   isComplete = false;
+  isManager = false;
+  isNewTicketManager = false;
   constructor(private ticketService: TicketService, private dictionaryService: DictionaryService,
               public dialogRef: MatDialogRef<TicketInformationDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: DialogData, private route: Router) {
+              @Inject(MAT_DIALOG_DATA) public data: DialogData, private route: Router,
+              private tokenStorageService: TokenStorageService) {
     this.currentTicketId = data.idTicket;
+    this.isManager = data.isManager;
+    this.isNewTicketManager = data.isNewTicketManager;
   }
 
   ngOnInit(): void {
@@ -58,7 +66,7 @@ export class TicketInformationDialogComponent implements OnInit {
       if (this.currentTicket.userAssigneeId != null){
         this.ticketService.findUserById(this.currentTicket.userAssigneeId).subscribe(
           user => {
-            this.currentTicket.userAssigneeId = user.firstName + user.lastName;
+            this.currentTicket.userAssigneeId = user.firstName + ' ' + user.lastName;
           }, error => {
             this.currentTicket.userAssigneeId = 'Не назначен';
             console.log(error);
@@ -94,5 +102,23 @@ export class TicketInformationDialogComponent implements OnInit {
 
   closed(): void {
     this.dialogRef.close();
+  }
+
+  assigneeTicket(ticketId: string): void {
+    this.ticketService.changeStatusTicketAndAssignee(ticketId, 'ASSIGNED').subscribe(
+      res => {
+        console.log(res);
+        this.dialogRef.close();
+      }
+    );
+  }
+
+  completeTicket(ticketId: string): void {
+    this.ticketService.changeStatusTicketAndAssignee(ticketId, 'COMPLETE').subscribe(
+      res => {
+        console.log(res);
+        this.dialogRef.close();
+      }
+    );
   }
 }

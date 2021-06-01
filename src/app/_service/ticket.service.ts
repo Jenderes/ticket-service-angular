@@ -71,14 +71,14 @@ export class TicketService {
       status: statusValue
     }, httpOptions);
   }
-  changeStatusTicketAndAssignee(ticketId: number, statusValue: string): Observable<any>{
+  changeStatusTicketAndAssignee(ticketId: number | string, statusValue: string): Observable<any>{
     const userId = this.tokenStorageService.getCurrentId();
     return this.http.patch(API_URL_TICKET + '/' + ticketId, {
       userAssigneeId: userId,
       status: statusValue
     }, httpOptions);
   }
-  findUserById(userId: number): Observable<any> {
+  findUserById(userId: string | number): Observable<any> {
     return this.http.get(API_URL_USER + '/user/' + userId);
   }
   getTicketById(ticketId: number): Observable<any> {

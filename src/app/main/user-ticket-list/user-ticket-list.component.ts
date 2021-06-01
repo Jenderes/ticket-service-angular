@@ -2,15 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import {TicketService} from '../../_service/ticket.service';
 import {TokenStorageService} from '../../_service/token-storage.service';
 import {Router} from '@angular/router';
-import {DictionaryService} from '../../_service/dictionary.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {TicketInformationDialogComponent} from '../ticket-information-dialog/ticket-information-dialog.component';
+import {DictionaryService} from '../../_service/dictionary.service';
 interface TicketData {
   ticketId: number;
   name: string;
   description: string;
   category: string;
   status: string;
+  userFullName: string;
+  userAssigneeId: number;
+  managerFullName: string;
 }
 interface Category {
   displayName: string;
@@ -24,19 +27,30 @@ interface Category {
 })
 export class UserTicketListComponent implements OnInit {
   dataTicket: TicketData[];
-  categories: Category[];
+  isManager = false;
+  isNewTicketManager = false;
   public isTicket = false;
   constructor(private ticketService: TicketService, private tokenStorageService: TokenStorageService,
-              private  router: Router, private dictionaryService: DictionaryService, public dialog: MatDialog) {
+              private  router: Router, private dictionaryService: DictionaryService,
+              public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
+    this.isManager = this.tokenStorageService.checkRole('ROLE_MANAGER');
     if (this.tokenStorageService.getToken()){
-      this.ticketService.getUserTicket().subscribe(
-        data => {
-          this.getTicketList(data);
-        }
-      );
+      if (!this.isManager){
+        this.ticketService.getUserTicket().subscribe(
+          data => {
+            this.getTicketList(data);
+          }
+        );
+      } else {
+        this.ticketService.getUserAssigneeTicket().subscribe(
+          tickets => {
+            this.getTicketList(tickets);
+          }
+        );
+      }
     }
   }
   getTicketList(data: TicketData[]): void {
@@ -44,14 +58,17 @@ export class UserTicketListComponent implements OnInit {
       this.isTicket = true;
       this.dataTicket = data;
       for (const ticket of this.dataTicket){
-        this.dictionaryService.getCategoryByName(ticket.category).subscribe(
-          category => {
-            ticket.category = category.displayName;
-          });
-        this.dictionaryService.getStatusByName(ticket.status).subscribe(
-          status => {
-            ticket.status = status.displayName;
-          });
+        if (!this.isManager) {
+          if (ticket.userAssigneeId != null) {
+            this.ticketService.findUserById(ticket.userAssigneeId).subscribe(
+              user => {
+                ticket.managerFullName = user.lastName + ' ' + user.firstName;
+              }
+            );
+          } else {
+            ticket.managerFullName = 'менеджера нет';
+          }
+        }
       }
     } else {
       this.isTicket = false;
@@ -60,20 +77,36 @@ export class UserTicketListComponent implements OnInit {
   createTicket(): void {
     this.router.navigate(['/create']).then();
   }
-  getCategoryList(categories: Category[]): void{
-    this.categories = categories;
-  }
-
-  allInformationTicket(id: number): void {
-    console.log(id);
-  }
   openDialog(ticketId: number): void {
     const dialogRef = this.dialog.open(TicketInformationDialogComponent, {
-      width: '600px',
-      data: {idTicket: ticketId}
+      width: '700px',
+      data: {idTicket: ticketId, isManager: this.isManager, isNewTicketManager: this.isNewTicketManager}
     });
     dialogRef.afterClosed().subscribe(result => {
       this.router.navigate(['/user']).then();
     });
+  }
+
+  userAssigneeTicket(): void {
+    this.isNewTicketManager = false;
+    this.ticketService.getUserAssigneeTicket().subscribe(
+      tickets => {
+        this.getTicketList(tickets);
+      }
+    );
+  }
+
+  newTicket(): void {
+    this.isNewTicketManager = true;
+    const userCategory = this.tokenStorageService.getUser().category;
+    this.dictionaryService.getCategoryByName(userCategory).subscribe(
+      category => {
+        this.ticketService.getTicketByCategoryAndStatus(category).subscribe(
+          tickets => {
+            this.getTicketList(tickets);
+          }
+        );
+      }
+    );
   }
 }

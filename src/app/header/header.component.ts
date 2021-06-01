@@ -34,10 +34,9 @@ export class HeaderComponent implements OnInit, DoCheck {
   resend(): void {
     if (this.tokenStorageService.checkRole('MANAGER')){
       this.role = 'МЕНЕДЖЕР';
-      this.route.navigate(['/manager']).then();
     } else {
       this.role = 'ПОЛЬЗОВАТЕЛЬ';
-      this.route.navigate(['/user']).then();
     }
+    this.route.navigate(['/user']).then();
   }
 }

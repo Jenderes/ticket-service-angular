@@ -3,7 +3,7 @@
   flex-direction: column;
   padding-top: 20px;
   align-items: center;
-  height: 90vh;
+  height: 89vh;
   background: #efefef;
 }
 .ticket {
@@ -40,7 +40,6 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  width: 100%;
 }
 .data:first-child {
   margin-left: 30px;
@@ -75,33 +74,6 @@
   display: flex;
   flex-direction: row;
 }
-.button_ticket {
-  font-size: 15pt;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  color: #FFFFFF;
-  height: 4vh;
-  margin-right: 20px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 3px 3px 0 rgba(0, 0, 0, 0.24);
-}
-
-.ticket_work_variant {
-  color: #878787;
-  width: 10%;
-}
-
-.color__ticket_date_start {
-  color: #0E9402;
-}
-
-.color__ticket_date_end {
-  color: #BA1C26;
-}
-
-.ticket_date {
-  width: 10%;
-}
 .empty-ticket {
   font-size: 23pt;
   width: 100%;
@@ -113,7 +85,43 @@
 }
 
 .buttons button{
-  width: 15vw;
-  height: 4vh;
-  font-size: 18pt;
+  width: 21vw;
+  height: 5vh;
+  font-size: 15pt;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image_category {
+  width: 40px;
+  height: 40px;
+}
+
+.ticket_category {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 10%;
+}
+.ticket_id {
+   width: 10%;
+ }
+.ticket_name {
+  justify-content: flex-start;
+  width: 70%;
+}
+
+.ticket_user {
+  width: 30%;
+}
+
+.ticket_label_main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 30pt;
+  margin-bottom: 20px;
 }
