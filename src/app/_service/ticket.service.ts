@@ -89,4 +89,10 @@ export class TicketService {
       status: 'REJECTED'
     });
   }
+  changeInfoTicket(ticketId: string | number, nameTicket: string, descriptionTicket: string): Observable<any>{
+    return this.http.patch(API_URL_TICKET + '/' + ticketId, {
+      name: nameTicket,
+      description: descriptionTicket
+    });
+  }
 }

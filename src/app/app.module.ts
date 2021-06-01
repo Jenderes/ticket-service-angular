@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import { TicketInformationDialogComponent } from './main/ticket-information-dialog/ticket-information-dialog.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,8 @@ import { TicketInformationDialogComponent } from './main/ticket-information-dial
         ReactiveFormsModule,
         BrowserAnimationsModule,
         MatButtonModule,
-        MatDialogModule
+        MatDialogModule,
+        MatCheckboxModule
     ],
   providers: [DatePipe, authInterceptorProviders, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]

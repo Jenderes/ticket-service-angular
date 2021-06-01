@@ -21,10 +21,20 @@
   flex-direction: row;
   justify-content: center;
 }
-.buttons button:first-child {
+.buttons button {
   margin-right: 30px;
   font-size: 15pt;
 }
 .buttons button {
   font-size: 15pt;
+}
+
+.text_ticket {
+  font-size: 15pt;
+}
+
+.check_ticket {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
 }

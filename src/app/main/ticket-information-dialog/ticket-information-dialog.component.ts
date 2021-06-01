@@ -41,6 +41,9 @@ export class TicketInformationDialogComponent implements OnInit {
   isComplete = false;
   isManager = false;
   isNewTicketManager = false;
+  isChangeName = false;
+  isChangeDescription = false;
+  isAllChanged = false;
   constructor(private ticketService: TicketService, private dictionaryService: DictionaryService,
               public dialogRef: MatDialogRef<TicketInformationDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: DialogData, private route: Router,
@@ -115,6 +118,24 @@ export class TicketInformationDialogComponent implements OnInit {
 
   completeTicket(ticketId: string): void {
     this.ticketService.changeStatusTicketAndAssignee(ticketId, 'COMPLETE').subscribe(
+      res => {
+        console.log(res);
+        this.dialogRef.close();
+      }
+    );
+  }
+
+  changeDesc(): void {
+    this.isAllChanged = true;
+    this.isChangeDescription = !this.isChangeDescription;
+  }
+  changeName(): void {
+    this.isAllChanged = true;
+    this.isChangeName = !this.isChangeName;
+  }
+
+  changeTicket(ticketId: string, name: string, description: string): void {
+    this.ticketService.changeInfoTicket(ticketId, name, description).subscribe(
       res => {
         console.log(res);
         this.dialogRef.close();
