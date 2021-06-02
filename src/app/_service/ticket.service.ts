@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {GlobalVariable} from '../_helpers/variable.service';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable, Subscription, } from 'rxjs';
-import {map, take} from 'rxjs/operators';
 import {DictionaryService} from './dictionary.service';
 import {TokenStorageService} from './token-storage.service';
 
@@ -21,8 +20,6 @@ const httpOptions = GlobalVariable.httpOptions;
 })
 export class TicketService {
   public categoryArray: Category[];
-  public findCategory: Category;
-  public test: any;
   constructor(private http: HttpClient,
               private dictionaryService: DictionaryService,
               private tokenStorageService: TokenStorageService) {
@@ -64,11 +61,6 @@ export class TicketService {
       name: ticket.name,
       description: ticket.description,
       category: ticket.category,
-    }, httpOptions);
-  }
-  changeStatusTicket(ticketId: number, statusValue: string): Observable<any>{
-    return this.http.patch(API_URL_TICKET + '/' + ticketId, {
-      status: statusValue
     }, httpOptions);
   }
   changeStatusTicketAndAssignee(ticketId: number | string, statusValue: string): Observable<any>{

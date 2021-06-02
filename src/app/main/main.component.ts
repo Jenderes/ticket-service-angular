@@ -15,7 +15,8 @@ interface UserData {
 })
 export class MainComponent implements OnInit {
   userFullName: string;
-  constructor(private tokenStorageService: TokenStorageService, private route: Router) { }
+  constructor(private tokenStorageService: TokenStorageService, private route: Router) {
+  }
 
   ngOnInit(): void {
     if (!this.tokenStorageService.getToken()) {

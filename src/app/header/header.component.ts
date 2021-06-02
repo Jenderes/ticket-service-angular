@@ -37,6 +37,6 @@ export class HeaderComponent implements OnInit, DoCheck {
     } else {
       this.role = 'ПОЛЬЗОВАТЕЛЬ';
     }
-    this.route.navigate(['/user']).then();
+    this.route.navigate(['/']).then();
   }
 }
