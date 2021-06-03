@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {TicketInformationDialogComponent} from '../ticket-information-dialog/ticket-information-dialog.component';
 import {DictionaryService} from '../../_service/dictionary.service';
+import {AuthenticationService} from '../../_service/authentication.service';
 interface TicketData {
   ticketId: number;
   name: string;
@@ -32,7 +33,7 @@ export class UserTicketListComponent implements OnInit {
   public isTicket = false;
   constructor(private ticketService: TicketService, private tokenStorageService: TokenStorageService,
               private  router: Router, private dictionaryService: DictionaryService,
-              public dialog: MatDialog) {
+              public dialog: MatDialog, private authenticationService: AuthenticationService) {
   }
 
   ngOnInit(): void {
@@ -60,7 +61,7 @@ export class UserTicketListComponent implements OnInit {
       for (const ticket of this.dataTicket){
         if (!this.isManager) {
           if (ticket.userAssigneeId != null) {
-            this.ticketService.findUserById(ticket.userAssigneeId).subscribe(
+            this.authenticationService.findUserById(ticket.userAssigneeId).subscribe(
               user => {
                 ticket.managerFullName = user.lastName + ' ' + user.firstName;
               }
@@ -84,6 +85,7 @@ export class UserTicketListComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       this.router.navigate(['/user']).then();
+      location.reload();
     });
   }
 

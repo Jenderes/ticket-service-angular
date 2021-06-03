@@ -12,25 +12,15 @@ interface Category {
 }
 
 const API_URL_TICKET = GlobalVariable.API_URL + 'troubleTicket';
-const API_URL_USER = GlobalVariable.API_URL + 'auth';
 const httpOptions = GlobalVariable.httpOptions;
 
 @Injectable({
   providedIn: 'root'
 })
 export class TicketService {
-  public categoryArray: Category[];
   constructor(private http: HttpClient,
               private dictionaryService: DictionaryService,
               private tokenStorageService: TokenStorageService) {
-    dictionaryService.getAllCategory().subscribe(
-      data => {
-        this.setCategory(data);
-      }
-    );
-  }
-  setCategory(data: any): void {
-    this.categoryArray = data;
   }
   getUserTicket(): Observable<any> {
     return this.http.get(API_URL_TICKET, {
@@ -69,9 +59,6 @@ export class TicketService {
       userAssigneeId: userId,
       status: statusValue
     }, httpOptions);
-  }
-  findUserById(userId: string | number): Observable<any> {
-    return this.http.get(API_URL_USER + '/user/' + userId);
   }
   getTicketById(ticketId: number): Observable<any> {
     return this.http.get(API_URL_TICKET + '/' + ticketId);

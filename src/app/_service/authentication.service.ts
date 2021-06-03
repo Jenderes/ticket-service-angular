@@ -28,4 +28,7 @@ export class AuthenticationService {
       lastName: user.value.lastName
     }, HttpOptions);
   }
+  findUserById(userId: string | number): Observable<any> {
+    return this.http.get(AUTH_API + 'user/' + userId);
+  }
 }

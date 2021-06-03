@@ -5,7 +5,7 @@
     <div class="lab" *ngIf="isManager && isNewTicketManager">Новые задачи</div>
   </div>
   <div class="buttons">
-    <button *ngIf="!isManager" mat-raised-button color="primary" (click)="createTicket()" class="create_ticket_button">
+    <button *ngIf="!isManager" mat-raised-button color="accent" (click)="createTicket()" class="create_ticket_button">
       Создать задачу
     </button>
     <button *ngIf="isManager && !isNewTicketManager" mat-raised-button color="primary" (click)="newTicket()" class="create_ticket_button">

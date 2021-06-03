@@ -1,22 +1,22 @@
 .content__image {
-  height: 600px;
-  margin: 0px;
-  padding: 0px;
+  height: 300px;
   font-family: 'Open Sans', sans-serif;
-  background: url('src/assets/images/404.svg') center no-repeat #fff;
   width: 100%;
   text-align: center;
   bottom: 10%;
   left: 0px;
+  padding: 30px 0px 0px;
 }
 
 .content__go-to-main {
   display: inline-block;
   text-decoration: none;
-  width: 100%;
+  width: 95%;
   text-align: center;
-  color: #ff5d40;
-  font-size: 19px
+  color: #4d03c1;
+  font-size: 20pt;
+  padding-left: 40px;
+  padding-top: 20px;
 }
 
 .content__go-to-main:hover {

@@ -4,6 +4,7 @@ import {DictionaryService} from '../../_service/dictionary.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Router} from '@angular/router';
 import {TokenStorageService} from '../../_service/token-storage.service';
+import {AuthenticationService} from '../../_service/authentication.service';
 interface Ticket {
   ticketId: string;
   name: string;
@@ -46,8 +47,7 @@ export class TicketInformationDialogComponent implements OnInit {
   isAllChanged = false;
   constructor(private ticketService: TicketService, private dictionaryService: DictionaryService,
               public dialogRef: MatDialogRef<TicketInformationDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: DialogData, private route: Router,
-              private tokenStorageService: TokenStorageService) {
+              @Inject(MAT_DIALOG_DATA) public data: DialogData, private authenticationService: AuthenticationService) {
     this.currentTicketId = data.idTicket;
     this.isManager = data.isManager;
     this.isNewTicketManager = data.isNewTicketManager;
@@ -67,7 +67,7 @@ export class TicketInformationDialogComponent implements OnInit {
     this.currentTicket = ticket;
     if (ticket != null){
       if (this.currentTicket.userAssigneeId != null){
-        this.ticketService.findUserById(this.currentTicket.userAssigneeId).subscribe(
+        this.authenticationService.findUserById(this.currentTicket.userAssigneeId).subscribe(
           user => {
             this.currentTicket.userAssigneeId = user.firstName + ' ' + user.lastName;
           }, error => {
