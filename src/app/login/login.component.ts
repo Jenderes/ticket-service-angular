@@ -30,10 +30,10 @@ export class LoginComponent implements OnInit {
         this.tokenStorageService.saveUser(loginData);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.route.navigate(['/']);
+        this.route.navigate(['/user']);
       },
       err => {
-        this.errorMessage = 'Неправильный логин или пароль';
+        this.errorMessage = err.error;
         this.isLoginFailed = true;
       }
     );

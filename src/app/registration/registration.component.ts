@@ -23,6 +23,7 @@ export class RegistrationComponent implements OnInit {
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
+      phoneNumber: new FormControl('', [Validators.required]),
       passwordsForm: new FormGroup({
         password: new FormControl('', [Validators.required, Validators.min(8)]),
         passwordConfirm: new FormControl('', [Validators.required]),
@@ -34,12 +35,12 @@ export class RegistrationComponent implements OnInit {
   }
   register(): any {
     this.authService.register(this.registerForm).subscribe(
-      registerData => {
+      data => {
         this.isRegisterFailed = false;
         this.isRegister = true;
         this.router.navigate(['/login']);
       }, err => {
-        this.errorMessage = err.error.message;
+        this.errorMessage = err.error;
         this.isRegisterFailed = true;
       }
     );

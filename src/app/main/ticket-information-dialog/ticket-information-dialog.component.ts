@@ -81,7 +81,7 @@ export class TicketInformationDialogComponent implements OnInit {
       if (this.currentTicket.status === 'COMPLETE' || this.currentTicket.status === 'REJECTED'){
         this.isComplete = true;
       }
-      this.dictionaryService.getStatusByName(this.currentTicket.status).subscribe(
+      this.dictionaryService.getStatusByName(this.currentTicket.status).pipe().subscribe(
         status => {
           this.currentTicket.status = status.displayName;
         }

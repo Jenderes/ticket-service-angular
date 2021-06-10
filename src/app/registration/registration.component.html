@@ -38,6 +38,10 @@
       <div *ngIf="registerForm.controls['lastName'].invalid && registerForm.controls['lastName'].touched">
         <app-error [error1]="'Введите фамилию'"></app-error>
       </div>
+      <input type="text" class="register__input" placeholder = "Номер телефона" name = "phoneNumber" formControlName="phoneNumber">
+      <div *ngIf="registerForm.controls['phoneNumber'].invalid && registerForm.controls['phoneNumber'].touched">
+        <app-error [error1]="'Введите номер телефона'"></app-error>
+      </div>
       <button class = "register__button" (click)="register()">Зарегистрироваться</button>
       <div class="alert" *ngIf="f.submitted && isRegisterFailed">
         {{ errorMessage }}

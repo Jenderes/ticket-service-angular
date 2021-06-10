@@ -23,11 +23,6 @@ export class TicketCreateComponent implements OnInit {
   ticket: TroubleTicket;
   ticketForm: FormGroup;
   arrayCategory: Category[];
-  //   = [
-  //   { name: 'work', displayName: 'Задачи'},
-  //   { name: 'test', displayName: 'Тесты'},
-  //   { name: 'interesting', displayName: 'интересы'},
-  // ];
   constructor(public ticketService: TicketService, public dictionaryService: DictionaryService,
               public route: Router, private formBuilder: FormBuilder) {
     this.ticket = {

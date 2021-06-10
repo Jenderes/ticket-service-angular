@@ -21,11 +21,12 @@ export class AuthenticationService {
   }
   register(user): Observable<any> {
     return this.http.post(AUTH_API + 'register', {
-      login: user.value.login,
+      username: user.value.login,
       email: user.value.email,
       password:  user.value.passwordsForm.password,
       firstName: user.value.firstName,
-      lastName: user.value.lastName
+      lastName: user.value.lastName,
+      phoneNumber: user.value.phoneNumber
     }, HttpOptions);
   }
   findUserById(userId: string | number): Observable<any> {
