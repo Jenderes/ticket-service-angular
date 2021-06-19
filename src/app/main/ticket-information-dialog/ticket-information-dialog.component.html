@@ -1,11 +1,11 @@
 <div class="dialog">
   <div class="dialog_form">
     <div class="dialog_name">
-      Задача № {{currentTicket.ticketId}}
+      Тикет № {{currentTicket.ticketId}}
     </div>
     <div class="dialog_div" *ngIf="!isManager">
       <div class="desc">
-        Имя задачи:
+        Имя тикета:
       </div>
       <div class="name_desc">
         <input type="text" [(ngModel)]="currentTicket.name" [disabled]="!isChangeName" class="text_ticket">
@@ -16,7 +16,7 @@
     </div>
     <div class="dialog_div" *ngIf="isManager">
       <div class="desc">
-        Имя задачи:
+        Имя тикета:
       </div>
       <div class="name_desc">
         {{currentTicket.name}}
@@ -24,7 +24,7 @@
     </div>
     <div class="dialog_div" *ngIf="isManager">
       <div class="desc">
-        Описание задачи:
+        Описание тикета:
       </div>
       <div class="name_desc">
         {{currentTicket.description}}
@@ -32,7 +32,7 @@
     </div>
     <div class="dialog_div" *ngIf="!isManager">
       <div class="desc">
-        Описание задачи:
+        Описание тикета:
       </div>
       <div class="name_desc">
         <input type="text" [(ngModel)]="currentTicket.description" [disabled]="!isChangeDescription" class="text_ticket">
@@ -90,19 +90,19 @@
       </div>
     </div>
     <div class="buttons">
-      <button *ngIf="isAllChanged && !isManager" mat-raised-button color="basic" (click)="changeTicket(currentTicket.ticketId, currentTicket.name, currentTicket.description)" class="create_ticket_button">
+      <button [mat-dialog-close]="true" *ngIf="isAllChanged && !isManager" mat-raised-button color="basic" (click)="changeTicket(currentTicket.ticketId, currentTicket.name, currentTicket.description)" class="create_ticket_button">
         Сохранить
       </button>
-      <button *ngIf="isNewTicketManager && isManager" mat-raised-button color="basic" (click)="assigneeTicket(currentTicket.ticketId)" class="create_ticket_button">
-        Взять задачу
+      <button [mat-dialog-close]="true" *ngIf="isNewTicketManager && isManager" mat-raised-button color="basic" (click)="assigneeTicket(currentTicket.ticketId)" class="create_ticket_button">
+        Взять тикет
       </button>
-      <button *ngIf="!isComplete && isManager && !isNewTicketManager" mat-raised-button color="basic" (click)="completeTicket(currentTicket.ticketId)" class="create_ticket_button">
-        Выполнить задачу
+      <button [mat-dialog-close]="true" *ngIf="!isComplete && isManager && !isNewTicketManager" mat-raised-button color="basic" (click)="completeTicket(currentTicket.ticketId)" class="create_ticket_button">
+        Выполнить тикет
       </button>
-      <button *ngIf="!isComplete && !isManager" mat-raised-button color="basic" (click)="cancelTicket(currentTicket.ticketId)" class="create_ticket_button">
-        Отменить задачу
+      <button [mat-dialog-close]="true" *ngIf="!isComplete && !isManager" mat-raised-button color="basic" (click)="cancelTicket(currentTicket.ticketId)" class="create_ticket_button">
+        Отменить тикет
       </button>
-      <button mat-raised-button color="warn" (click)="closed()" class="create_ticket_button">
+      <button [mat-dialog-close]="false" mat-raised-button color="warn" (click)="closed()" class="create_ticket_button">
         Закрыть
       </button>
     </div>

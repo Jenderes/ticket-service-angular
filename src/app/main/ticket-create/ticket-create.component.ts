@@ -51,10 +51,6 @@ export class TicketCreateComponent implements OnInit {
        console.log(error);
      }
    );
-   this.route.navigate(['/user']).then();
-  }
-
-  onSubmit(): void{
-
+   location.replace('/user');
   }
 }

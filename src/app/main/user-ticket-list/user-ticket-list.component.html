@@ -1,18 +1,18 @@
 <div class="body_ticket">
   <div class="ticket_label_main">
-    <div class="lab" *ngIf="!isManager">Созданные задачи</div>
-    <div class="lab" *ngIf="isManager && !isNewTicketManager">Выполняемые задачи</div>
-    <div class="lab" *ngIf="isManager && isNewTicketManager">Новые задачи</div>
+    <div class="lab" *ngIf="!isManager">Созданные тикеты</div>
+    <div class="lab" *ngIf="isManager && !isNewTicketManager">Выполняемые тикеты</div>
+    <div class="lab" *ngIf="isManager && isNewTicketManager">Новые тикеты</div>
   </div>
   <div class="buttons">
     <button *ngIf="!isManager" mat-raised-button color="accent" (click)="createTicket()" class="create_ticket_button">
-      Создать задачу
+      Создать тикет
     </button>
     <button *ngIf="isManager && !isNewTicketManager" mat-raised-button color="primary" (click)="newTicket()" class="create_ticket_button">
-      показать новые задачи
+      показать новые тикеты
     </button>
     <button *ngIf="isManager && isNewTicketManager" mat-raised-button color="primary" (click)="userAssigneeTicket()" class="create_ticket_button">
-      показать выполняемые задачи
+      показать выполняемые тикеты
     </button>
   </div>
   <div class="check_ticket" *ngIf="isTicket">
@@ -39,6 +39,6 @@
     </div>
   </div>
   <div class="empty-ticket" *ngIf="!isTicket">
-    Задачи отсуствуют
+    Тикеты отсуствуют
   </div>
 </div>

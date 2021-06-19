@@ -30,6 +30,9 @@
         </div>
       </div>
       <input type="text" class="register__input" placeholder = "Email" name = "email" formControlName="email">
+      <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched">
+        <app-error [error1]="'неправильный email'"></app-error>
+      </div>
       <input type="text" class="register__input" placeholder = "Имя" name = "firstName" formControlName="firstName">
       <div *ngIf="registerForm.controls['firstName'].invalid && registerForm.controls['firstName'].touched">
         <app-error [error1]="'Введите имя'"></app-error>

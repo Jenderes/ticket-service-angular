@@ -85,7 +85,9 @@ export class UserTicketListComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       this.router.navigate(['/user']).then();
-      location.reload();
+      if (result === true) {
+        location.reload();
+      }
     });
   }
 

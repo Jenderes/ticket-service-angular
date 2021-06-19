@@ -1,11 +1,11 @@
-.create_task {
+.create_ticket {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 90%;
 }
 
-.window_task {
+.window_ticket {
   height: 70%;
   width: 40%;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -16,7 +16,7 @@
   justify-content: center;
 }
 
-.input_add_task {
+.input_add_ticket {
   display: flex;
   flex-direction: column;
   width: 80%;
@@ -24,7 +24,7 @@
   align-items: center;
 }
 
-.head_task {
+.name_ticket {
   font-family: "Roboto", sans-serif;
   outline: 0;
   background: #f2f2f2;
@@ -51,7 +51,7 @@
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
-.task_description {
+.ticket_description {
   font-family: "Roboto", sans-serif;
   outline: 0;
   background: #f2f2f2;
@@ -186,7 +186,7 @@
   align-items: center;
 }
 
-.button_create_task {
+.button_create_ticket {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -194,7 +194,7 @@
   margin-right: 30px;
 }
 
-.button_cancel_task {
+.button_cancel_ticket {
   display: flex;
   justify-content: center;
   align-items: center;

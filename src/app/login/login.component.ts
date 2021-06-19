@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         this.route.navigate(['/user']);
       },
       err => {
-        this.errorMessage = err.error;
+        this.errorMessage = 'Не правильный логин или пароль';
         this.isLoginFailed = true;
       }
     );
